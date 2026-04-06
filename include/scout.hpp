@@ -1,4 +1,5 @@
 #pragma once
+#include <scoutconfig.hpp>
 #include <platformtype.hpp>
 #include <string>
 

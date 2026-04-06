@@ -19,8 +19,14 @@ add_library(
 
 	include/scout.hpp
 	include/platformtype.hpp
+	include/scoutconfig.hpp
+	include/window.hpp
 
 	src/glad.c
+	
+	src/platformtype.cpp
+	src/window.cpp
+
 )
 
 target_include_directories(scout PUBLIC "include")
