@@ -21,11 +21,15 @@ add_library(
 	include/platformtype.hpp
 	include/scoutconfig.hpp
 	include/window.hpp
+	include/gl33context.hpp
+	include/graphicscontext.hpp
 
 	src/glad.c
 	
 	src/platformtype.cpp
 	src/window.cpp
+	src/gl33context.cpp
+	src/graphicscontext.cpp
 
 )
 

@@ -8,8 +8,19 @@ Scout::Window::Window(std::string_view title, unsigned int width, unsigned int h
 	this->height = height;
 
 	#ifdef SCOUT_USE_GLFW
-		
-		glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
+	
+		// While I would prefer the context creation to be in a GraphicsContext class, GLFW does not support creating a context after window creation.
+		// I could make a system for the GraphicsContext to tell the window to use some flags, that sounds compilated.
+
+		if (Scout::renderer == Scout::RendererType::OpenGL33) {
+			
+			glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+			glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+			glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+
+		} else {
+			glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
+		}
 		handle = glfwCreateWindow(width, height, this->title.c_str(), nullptr, nullptr);
 
 	#endif

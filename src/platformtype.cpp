@@ -1,10 +1,8 @@
 #include <scout.hpp>
 
 
-#if !defined (SCOUT_USE_NATIVE_APIS)
+#if defined (SCOUT_USE_GLFW)
 	Scout::WindowType Scout::windowType = Scout::WindowType::GLFW;
-#else
-	#error Native window APIs are not supported.
 #endif
 
 
@@ -14,3 +12,5 @@
 #else
 	#error Only Windows is supported.
 #endif
+
+Scout::RendererType Scout::renderer = Scout::RendererType::OpenGL33;
