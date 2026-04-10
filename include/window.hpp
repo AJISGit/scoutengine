@@ -3,8 +3,11 @@
 #include <string_view>
 
 
+
 namespace Scout {
 	
+	class GraphicsContext;
+
 	class Window {
 
 		private:
@@ -13,6 +16,7 @@ namespace Scout {
 		unsigned int width = 0;
 		unsigned int height = 0;
 		std::string title;
+		GraphicsContext* graphicsContext = nullptr;
 
 		// Open is if the window still open, while closed is if close() has been called.
 		bool open = true;

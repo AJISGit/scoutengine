@@ -1,4 +1,5 @@
 #include <window.hpp>
+#include <graphicscontext.hpp>
 
 
 Scout::Window::Window(std::string_view title, unsigned int width, unsigned int height) {
@@ -24,6 +25,8 @@ Scout::Window::Window(std::string_view title, unsigned int width, unsigned int h
 		handle = glfwCreateWindow(width, height, this->title.c_str(), nullptr, nullptr);
 
 	#endif
+
+	graphicsContext = new Scout::GraphicsContext(this);
 
 }
 
@@ -82,6 +85,8 @@ Scout::WindowHandle Scout::Window::getWindowHandle() {
 void Scout::Window::close() {
 
 	if (closed) return;
+
+	delete graphicsContext;
 
 	#if defined (SCOUT_USE_GLFW)
 		glfwDestroyWindow(handle);
