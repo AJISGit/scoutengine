@@ -105,3 +105,21 @@ void Scout::Window::pollEvents() {
 
 }
 
+
+void Scout::Window::clear(float r, float g, float b) {
+	
+	if (Scout::renderer == Scout::RendererType::OpenGL33) {
+		glClearColor(r, g, b, 1.0f);
+		glClear(GL_COLOR_BUFFER_BIT);
+	}
+
+}
+
+
+void Scout::Window::present() {
+
+	if ((Scout::windowType == Scout::WindowType::GLFW) && Scout::renderer == Scout::RendererType::OpenGL33) {
+		glfwSwapBuffers(getWindowHandle());
+	}
+
+}

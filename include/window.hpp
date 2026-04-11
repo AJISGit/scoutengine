@@ -64,7 +64,8 @@ namespace Scout {
 		 * This function really polls events for all windows open.
 		*/
 		void pollEvents();
-
+		void clear(float r, float g, float b);
+		void present();
 
 
 	};

@@ -23,6 +23,10 @@ add_library(
 	include/window.hpp
 	include/gl33context.hpp
 	include/graphicscontext.hpp
+	include/vertexbuffer.hpp
+	include/vertexarray.hpp
+	include/shader.hpp
+	include/draw.hpp
 
 	src/glad.c
 	
@@ -30,6 +34,10 @@ add_library(
 	src/window.cpp
 	src/gl33context.cpp
 	src/graphicscontext.cpp
+	src/vertexbuffer.cpp
+	src/vertexarray.cpp
+	src/shader.cpp
+	src/draw.cpp
 
 )
 
