@@ -25,6 +25,7 @@ add_library(
 	include/graphicscontext.hpp
 	include/vertexbuffer.hpp
 	include/vertexarray.hpp
+	include/vertexattrib.hpp
 	include/shader.hpp
 	include/draw.hpp
 
@@ -36,6 +37,7 @@ add_library(
 	src/graphicscontext.cpp
 	src/vertexbuffer.cpp
 	src/vertexarray.cpp
+	src/vertexattrib.cpp
 	src/shader.cpp
 	src/draw.cpp
 

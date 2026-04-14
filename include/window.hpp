@@ -60,7 +60,7 @@ namespace Scout {
 		/**
 		 * @brief Polls window events (closing, moving, etc.)
 		 *
-		 * @detail
+		 * @details
 		 * This function really polls events for all windows open.
 		*/
 		void pollEvents();

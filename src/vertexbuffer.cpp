@@ -1,9 +1,15 @@
 #include <vertexbuffer.hpp>
 
 
-Scout::Renderer::VertexBuffer::VertexBuffer(std::initializer_list<float> vertices) {
+Scout::Renderer::VertexBuffer::VertexBuffer(std::initializer_list<float> vertices, bool initialize) {
 	
 	this->vertices = vertices;
+	if (initialize) init();
+
+}
+
+
+void Scout::Renderer::VertexBuffer::init() {
 
 	if (Scout::renderer == Scout::RendererType::OpenGL33) {
 
@@ -32,6 +38,6 @@ unsigned int Scout::Renderer::VertexBuffer::getHandle() const {
 
 
 unsigned int Scout::Renderer::VertexBuffer::getAmount() const {
-	return vertices.size() / 2;
+	return vertices.size();
 }
 

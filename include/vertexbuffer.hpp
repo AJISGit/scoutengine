@@ -18,8 +18,15 @@ namespace Scout::Renderer {
 		/**
 		 * @param vertices The vertices to be stored in the buffer.
 		*/
-		VertexBuffer(std::initializer_list<float> vertices);
+		VertexBuffer(std::initializer_list<float> vertices, bool initialize = false);
 		virtual ~VertexBuffer();
+
+
+		/**
+		 * Initializes the actual resource.
+		*/
+		void init();
+
 
 		/**
 		 * Gets the API specific handle to the vertex buffer.
