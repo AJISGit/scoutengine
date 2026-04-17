@@ -12,6 +12,7 @@ namespace Scout::Renderer {
 	 * @param vertexArray The `VertexArray` to be drawn.
 	*/
 	void drawVertexArray(const VertexArray& vertexArray);
+	void drawElements(const VertexArray& vertexArray);
 
 }
 

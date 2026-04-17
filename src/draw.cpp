@@ -23,3 +23,21 @@ void Scout::Renderer::drawVertexArray(const Scout::Renderer::VertexArray& vertex
 	}
 
 }
+
+
+void Scout::Renderer::drawElements(const Scout::Renderer::VertexArray& vertexArray) {
+
+	if (Scout::renderer == Scout::RendererType::OpenGL33) {
+
+		unsigned int VAO = vertexArray.getHandle();
+
+		unsigned int count = vertexArray.getElementBuffer()->getAmount();
+
+		glBindVertexArray(VAO);
+		glDrawElements(GL_TRIANGLES, count, GL_UNSIGNED_INT, nullptr);
+		glBindVertexArray(0);	
+
+	}
+
+}
+

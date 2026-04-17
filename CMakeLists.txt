@@ -24,6 +24,7 @@ add_library(
 	include/gl33context.hpp
 	include/graphicscontext.hpp
 	include/vertexbuffer.hpp
+	include/elementbuffer.hpp
 	include/vertexarray.hpp
 	include/vertexattrib.hpp
 	include/shader.hpp
@@ -36,6 +37,7 @@ add_library(
 	src/gl33context.cpp
 	src/graphicscontext.cpp
 	src/vertexbuffer.cpp
+	src/elementbuffer.cpp
 	src/vertexarray.cpp
 	src/vertexattrib.cpp
 	src/shader.cpp

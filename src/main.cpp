@@ -16,9 +16,15 @@ int main() {
 
 	Scout::Renderer::VertexBuffer vertexBuffer({
 		// Position		Color 
-		-0.5f, -0.5f,	1.0f, 0.0f, 0.0f,
-     	0.5f, -0.5f,	0.0f, 1.0f, 0.0f,
-    	0.0f,  0.5f, 	0.0f, 0.0f, 1.0f
+		-0.5f, -0.5f,	1.0f, 0.0f, 0.0f, // Bottom Left
+     	0.5f, -0.5f,	0.0f, 1.0f, 0.0f, // Bottom Right
+    	-0.5f,  0.5f, 	0.0f, 0.0f, 1.0f, // Top Left
+		0.5f, 0.5f,		1.0f, 1.0f, 0.0f // Top Right
+	});
+
+	Scout::Renderer::ElementBuffer elementBuffer({
+		0, 1, 3,
+		3, 2, 0 
 	});
 
 	Scout::Renderer::VertexAttribute attrib0(0, 2, false, 5 * sizeof(float), 0);
@@ -26,7 +32,7 @@ int main() {
 	std::vector<Scout::Renderer::VertexAttribute*> vertexAttribs = { &attrib0, &attrib1 };
 
 
-	Scout::Renderer::VertexArray vertexArray(&vertexBuffer, vertexAttribs);
+	Scout::Renderer::VertexArray vertexArray(&vertexBuffer, &elementBuffer, vertexAttribs);
 
 	Scout::Renderer::Shader shader(R"(
 		#version 330 core
@@ -57,7 +63,7 @@ int main() {
 		window.clear(0.0f, 0.0f, 0.0f);
 	
 		shader.setCurrent();
-		Scout::Renderer::drawVertexArray(vertexArray);
+		Scout::Renderer::drawElements(vertexArray);
 		window.present();
 
 	}

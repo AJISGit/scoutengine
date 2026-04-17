@@ -1,9 +1,10 @@
 #include <vertexarray.hpp>
 
 
-Scout::Renderer::VertexArray::VertexArray(Scout::Renderer::VertexBuffer* vertexBuffer, std::vector<Scout::Renderer::VertexAttribute*>& vertexAttributes, bool initialize) : attribs(vertexAttributes) {
+Scout::Renderer::VertexArray::VertexArray(Scout::Renderer::VertexBuffer* vertexBuffer, Scout::Renderer::ElementBuffer* elementBuffer, std::vector<Scout::Renderer::VertexAttribute*>& vertexAttributes, bool initialize) : attribs(vertexAttributes) {
 
 	this->vertexBuffer = vertexBuffer;
+	this->elementBuffer = elementBuffer;
 
 	if (initialize) init();
 
@@ -19,6 +20,7 @@ void Scout::Renderer::VertexArray::init() {
 
 	
 		vertexBuffer->init();
+		if (elementBuffer) elementBuffer->init();
 		
 		for (Scout::Renderer::VertexAttribute* attrib : attribs) {
 			attrib->init();
@@ -45,6 +47,11 @@ unsigned int Scout::Renderer::VertexArray::getHandle() const {
 
 const Scout::Renderer::VertexBuffer* Scout::Renderer::VertexArray::getVertexBuffer() const {
 	return vertexBuffer;
+}
+
+
+const Scout::Renderer::ElementBuffer* Scout::Renderer::VertexArray::getElementBuffer() const {
+	return elementBuffer;
 }
 
 

@@ -1,5 +1,6 @@
 #pragma once
 #include <vertexbuffer.hpp>
+#include <elementbuffer.hpp>
 #include <vertexattrib.hpp>
 #include <vector>
 
@@ -15,7 +16,9 @@ namespace Scout::Renderer {
 		
 		private:
 		VertexBuffer* vertexBuffer = nullptr;
+		ElementBuffer* elementBuffer = nullptr;
 		unsigned int VBO;
+		unsigned int EBO;
 		unsigned int VAO;
 
 		std::vector<VertexAttribute*>& attribs;
@@ -24,7 +27,7 @@ namespace Scout::Renderer {
 		/**
 		 * @param vertices The vertices to be stored in the internal `VertexBuffer`.
 		*/
-		VertexArray(VertexBuffer* vertexBuffer, std::vector<VertexAttribute*>& vertexAttributes, bool initialize = true);
+		VertexArray(VertexBuffer* vertexBuffer, ElementBuffer* elementBuffer, std::vector<VertexAttribute*>& vertexAttributes, bool initialize = true);
 		virtual ~VertexArray();
 
 		
@@ -43,6 +46,7 @@ namespace Scout::Renderer {
 		 * @return A pointer to the internal `VertexBuffer`.
 		*/
 		const VertexBuffer* getVertexBuffer() const;
+		const ElementBuffer* getElementBuffer() const;
 		const std::vector<VertexAttribute*>& getVertexAttribs() const;
 
 	};
