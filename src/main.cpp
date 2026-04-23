@@ -16,9 +16,9 @@ int main() {
 
 	Scout::Renderer::VertexBuffer vertexBuffer({
 		// Position		Color 
-		-0.5f, -0.5f,	1.0f, 0.0f, 0.0f, // Bottom Left
+		-0.5f, -0.5f, 	1.0f, 0.0f, 0.0f, // Bottom Left
      	0.5f, -0.5f,	0.0f, 1.0f, 0.0f, // Bottom Right
-    	-0.5f,  0.5f, 	0.0f, 0.0f, 1.0f, // Top Left
+    	-0.5f,  0.5f,  	0.0f, 0.0f, 1.0f, // Top Left
 		0.5f, 0.5f,		1.0f, 1.0f, 0.0f // Top Right
 	});
 
@@ -28,7 +28,7 @@ int main() {
 	});
 
 	Scout::Renderer::VertexAttribute attrib0(0, 2, false, 5 * sizeof(float), 0);
-	Scout::Renderer::VertexAttribute attrib1(1, 3, false, 5 * sizeof(float), 3 * sizeof(float));
+	Scout::Renderer::VertexAttribute attrib1(1, 3, false, 5 * sizeof(float), 2 * sizeof(float));
 	std::vector<Scout::Renderer::VertexAttribute*> vertexAttribs = { &attrib0, &attrib1 };
 
 
