@@ -29,6 +29,7 @@ add_library(
 	include/vertexattrib.hpp
 	include/shader.hpp
 	include/draw.hpp
+	include/instance.hpp
 
 	src/glad.c
 	
@@ -42,6 +43,7 @@ add_library(
 	src/vertexattrib.cpp
 	src/shader.cpp
 	src/draw.cpp
+	src/instance.cpp
 
 )
 
