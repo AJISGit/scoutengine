@@ -16,6 +16,8 @@ add_library(
 	include/KHR/khrplatform.h
 	include/glad/glad.h
 
+	include/stb_image.h
+
 
 	include/scout.hpp
 	include/platformtype.hpp
@@ -27,11 +29,14 @@ add_library(
 	include/elementbuffer.hpp
 	include/vertexarray.hpp
 	include/vertexattrib.hpp
+	include/texture.hpp
 	include/shader.hpp
 	include/draw.hpp
 	include/instance.hpp
 
 	src/glad.c
+
+	src/stb_image.cpp
 	
 	src/platformtype.cpp
 	src/window.cpp
@@ -41,6 +46,7 @@ add_library(
 	src/elementbuffer.cpp
 	src/vertexarray.cpp
 	src/vertexattrib.cpp
+	src/texture.cpp
 	src/shader.cpp
 	src/draw.cpp
 	src/instance.cpp
