@@ -30,6 +30,8 @@ namespace Scout {
 		Texture(unsigned char* data, unsigned int width, unsigned int height, TextureWrapMethod wrapS, TextureWrapMethod wrapT, TextureMinFilter minFilter, TextureMagFilter magFilter, TextureFormat format);
 		virtual ~Texture();
 
+		void enable(int index);
+
 
 		unsigned int getId();
 		unsigned int getWidth();

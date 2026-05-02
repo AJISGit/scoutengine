@@ -150,3 +150,9 @@ Scout::TextureFormat Scout::Texture::getFormat() {
 	return format;
 }
 
+
+void Scout::Texture::enable(int index) {
+	glActiveTexture(GL_TEXTURE0 + index);
+	glBindTexture(GL_TEXTURE_2D, getId());
+}
+

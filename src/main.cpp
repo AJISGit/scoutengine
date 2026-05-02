@@ -83,9 +83,7 @@ int main() {
 	
 		shader.setCurrent();
 
-		glActiveTexture(GL_TEXTURE0);
-		glBindTexture(GL_TEXTURE_2D, texID);
-
+		texture.enable(0);
 		shader.setUniform("image", 0);
 		
 		Scout::Renderer::drawElements(vertexArray);
