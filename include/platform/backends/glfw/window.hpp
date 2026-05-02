@@ -1,5 +1,6 @@
 #pragma once
 #include <scout.hpp>
+#include <keys.hpp>
 #include <string_view>
 
 
@@ -66,6 +67,8 @@ namespace Scout {
 		void pollEvents();
 		void clear(float r, float g, float b);
 		void present();
+
+		bool isKeyDown(Input::Key key);
 
 
 	};

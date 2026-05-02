@@ -8,6 +8,10 @@
 #include <stb_image.h>
 #include <iostream>
 
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+
 
 int main() {
 
@@ -30,10 +34,10 @@ int main() {
 
 	Scout::Renderer::VertexBuffer vertexBuffer({
 		// Position		UV 
-		-0.5f, -0.5f, 	0.0f, 0.0f, // Bottom Left
-     	0.5f, -0.5f,	1.0f, 0.0f, // Bottom Right
-    	-0.5f,  0.5f,  	0.0f, 1.0f, // Top Left
-		0.5f, 0.5f,		1.0f, 1.0f // Top Right
+		0.0f, 128.0f, 	0.0f, 0.0f, // Bottom Left
+     	128.0f, 128.0f,	1.0f, 0.0f, // Bottom Right
+    	0.0f,  0.0f,  	0.0f, 1.0f, // Top Left
+		128.0f, 0.0f,		1.0f, 1.0f // Top Right
 	});
 
 	Scout::Renderer::ElementBuffer elementBuffer({
@@ -54,9 +58,13 @@ int main() {
 		layout (location = 1) in vec2 aUV;
 		out vec2 uvCoord;
 
+		uniform mat4 model;
+		uniform mat4 projection;
+
 
 		void main() {
-			gl_Position = vec4(aPos, 0.0f, 1.0f);
+			gl_Position = projection * model * vec4(aPos, 0.0f, 1.0f);
+			gl_Position.z = 0.1f;
 			uvCoord = aUV;
 		}
 
@@ -77,7 +85,19 @@ int main() {
 	unsigned int texID = texture.getId();
 	unsigned int shaderID = shader.getHandle();
 
+
+	glm::vec2 position = { 0.0f, 0.0f };
+	float speed = 300.0f;
+
+	float deltaTime = 0.0f;
+	float lastFrame = 0.0f;
+
 	while (window.isOpen()) {
+
+		float currentFrame = glfwGetTime();
+		deltaTime = currentFrame - lastFrame;
+		lastFrame = currentFrame;
+
 		window.pollEvents();
 		window.clear(0.2f, 0.2f, 0.2f);
 	
@@ -85,7 +105,30 @@ int main() {
 
 		texture.enable(0);
 		shader.setUniform("image", 0);
+
+
+		glm::mat4 model(1.0f);
 		
+		if (window.isKeyDown(Scout::Input::Key::W)) {
+			position.y -= speed * deltaTime;
+		}
+		if (window.isKeyDown(Scout::Input::Key::A)) {
+			position.x -= speed * deltaTime;
+		}
+		if (window.isKeyDown(Scout::Input::Key::S)) {
+			position.y += speed * deltaTime;
+		}
+		if (window.isKeyDown(Scout::Input::Key::D)) {
+			position.x += speed * deltaTime;
+		}
+
+		model = glm::translate(model, glm::vec3(position, 0.0f));
+
+		glm::mat4 projection = glm::ortho(0.0f, static_cast<float>(window.getWidth()), static_cast<float>(window.getHeight()), 0.0f, 0.1f, 10.0f);
+
+		shader.setUniform("model", model);
+		shader.setUniform("projection", projection);
+
 		Scout::Renderer::drawElements(vertexArray);
 		window.present();
 
