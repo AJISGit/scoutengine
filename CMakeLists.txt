@@ -22,6 +22,7 @@ add_library(
 	include/scout.hpp
 	include/platformtype.hpp
 	include/scoutconfig.hpp
+	include/clear.hpp
 	include/window.hpp
 	include/gl33context.hpp
 	include/graphicscontext.hpp
@@ -39,6 +40,7 @@ add_library(
 	src/stb_image.cpp
 	
 	src/platformtype.cpp
+	src/clear.cpp
 	src/window.cpp
 	src/gl33context.cpp
 	src/graphicscontext.cpp

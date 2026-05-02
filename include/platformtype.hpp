@@ -17,7 +17,7 @@ namespace Scout {
 	extern WindowType windowType;
 	extern RendererType renderer;
 	
-	#if defined(SCOUT_USE_GLFW)
+	#ifdef SCOUT_USE_GLFW
 		using WindowHandle = GLFWwindow*;
 	#endif
 

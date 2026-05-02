@@ -1,4 +1,4 @@
 #include <scout.hpp>
 #ifdef SCOUT_USE_GLFW
-	#include "./platform/backends/glfw/window.cpp"
+	#include "./graphics/backends/gl33/clear.cpp"
 #endif
