@@ -1,5 +1,9 @@
 #pragma once
 #include <scout.hpp>
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+
 
 
 namespace Scout::Renderer {
@@ -37,6 +41,19 @@ namespace Scout::Renderer {
 		 * @return The handle to the shader program.
 		*/
 		unsigned int getHandle() const;
+
+		// Uniform setters //
+		
+		void setUniform(std::string_view name, bool value);
+		void setUniform(std::string_view name, int value);
+		void setUniform(std::string_view name, float value);
+
+		void setUniform(std::string_view name, const glm::vec2& value);
+		void setUniform(std::string_view name, const glm::vec3& value);
+		void setUniform(std::string_view name, const glm::vec4& value);
+
+		void setUniform(std::string_view name, const glm::mat4& value);
+		
 
 	};
 

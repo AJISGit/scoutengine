@@ -81,3 +81,38 @@ unsigned int Scout::Renderer::Shader::getHandle() const {
 	return shader;
 }
 
+
+void Scout::Renderer::Shader::setUniform(std::string_view name, bool value) {
+	glUniform1i(glGetUniformLocation(getHandle(), name.data()), value);
+}
+
+
+void Scout::Renderer::Shader::setUniform(std::string_view name, int value) {
+	glUniform1i(glGetUniformLocation(getHandle(), name.data()), value);
+}
+
+
+void Scout::Renderer::Shader::setUniform(std::string_view name, float value) {
+	glUniform1f(glGetUniformLocation(getHandle(), name.data()), value);
+}
+
+
+void Scout::Renderer::Shader::setUniform(std::string_view name, const glm::vec2& value) {
+	glUniform2fv(glGetUniformLocation(getHandle(), name.data()), 1, glm::value_ptr(value));
+}
+
+
+void Scout::Renderer::Shader::setUniform(std::string_view name, const glm::vec3& value) {
+	glUniform3fv(glGetUniformLocation(getHandle(), name.data()), 1, glm::value_ptr(value));
+}
+
+
+void Scout::Renderer::Shader::setUniform(std::string_view name, const glm::vec4& value) {
+	glUniform4fv(glGetUniformLocation(getHandle(), name.data()), 1, glm::value_ptr(value));
+}
+
+
+void Scout::Renderer::Shader::setUniform(std::string_view name, const glm::mat4& value) {
+	glUniformMatrix4fv(glGetUniformLocation(getHandle(), name.data()), 1, GL_FALSE, glm::value_ptr(value));
+}
+

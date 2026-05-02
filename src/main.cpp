@@ -29,7 +29,7 @@ int main() {
 
 
 	Scout::Renderer::VertexBuffer vertexBuffer({
-		// Position		Color 
+		// Position		UV 
 		-0.5f, -0.5f, 	0.0f, 0.0f, // Bottom Left
      	0.5f, -0.5f,	1.0f, 0.0f, // Bottom Right
     	-0.5f,  0.5f,  	0.0f, 1.0f, // Top Left
@@ -86,8 +86,8 @@ int main() {
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, texID);
 
-		glUniform1i(glGetUniformLocation(shaderID, "image"), 0);
-
+		shader.setUniform("image", 0);
+		
 		Scout::Renderer::drawElements(vertexArray);
 		window.present();
 
