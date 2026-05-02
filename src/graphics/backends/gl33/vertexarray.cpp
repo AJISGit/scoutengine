@@ -13,30 +13,23 @@ Scout::Renderer::VertexArray::VertexArray(Scout::Renderer::VertexBuffer* vertexB
 
 void Scout::Renderer::VertexArray::init() {
 
-	if (Scout::renderer == Scout::RendererType::OpenGL33) {
-
-		glGenVertexArrays(1, &VAO);
-		glBindVertexArray(VAO);
+	glGenVertexArrays(1, &VAO);
+	glBindVertexArray(VAO);
 
 	
-		vertexBuffer->init();
-		if (elementBuffer) elementBuffer->init();
+	vertexBuffer->init();
+	if (elementBuffer) elementBuffer->init();
 		
-		for (Scout::Renderer::VertexAttribute* attrib : attribs) {
-			attrib->init();
-		}
-
+	for (Scout::Renderer::VertexAttribute* attrib : attribs) {
+		attrib->init();
 	}
+
 
 }
 
 
 Scout::Renderer::VertexArray::~VertexArray() {
-
-	if (Scout::renderer == Scout::RendererType::OpenGL33) {
-		glDeleteVertexArrays(1, &VAO);
-	}
-
+	glDeleteVertexArrays(1, &VAO);
 }
 
 

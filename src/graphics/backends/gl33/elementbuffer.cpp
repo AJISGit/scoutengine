@@ -12,23 +12,17 @@ Scout::Renderer::ElementBuffer::ElementBuffer(std::initializer_list<unsigned int
 
 void Scout::Renderer::ElementBuffer::init() {
 
-	if (Scout::renderer == Scout::RendererType::OpenGL33) {
+	glGenBuffers(1, &EBO);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
 
-		glGenBuffers(1, &EBO);
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-
-		glBufferData(GL_ELEMENT_ARRAY_BUFFER, this->indices.size() * sizeof(float), this->indices.data(), GL_STATIC_DRAW); 
-
-	}
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, this->indices.size() * sizeof(float), this->indices.data(), GL_STATIC_DRAW);
 
 }
 
 
 Scout::Renderer::ElementBuffer::~ElementBuffer() {
 	
-	if (Scout::renderer == Scout::RendererType::OpenGL33) {
-		glDeleteBuffers(1, &EBO);
-	}
+	glDeleteBuffers(1, &EBO);
 
 }
 

@@ -16,10 +16,8 @@ Scout::Renderer::VertexAttribute::VertexAttribute(unsigned int index, unsigned i
 
 void Scout::Renderer::VertexAttribute::init() {
 
-	if (Scout::renderer == Scout::RendererType::OpenGL33) {
-		glVertexAttribPointer(index, size, GL_FLOAT, normalized, stride, reinterpret_cast<void*>(offset));
-		glEnableVertexAttribArray(index);
-	}
+	glVertexAttribPointer(index, size, GL_FLOAT, normalized, stride, reinterpret_cast<void*>(offset));
+	glEnableVertexAttribArray(index);
 
 }
 
