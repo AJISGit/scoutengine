@@ -1,1 +1,3 @@
 #define SCOUT_USE_GLFW
+
+#define SCOUT_USE_GL33
