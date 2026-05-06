@@ -6,11 +6,14 @@
 #endif
 
 
-
 #if defined(_WIN32)
 	Scout::PlatformType Scout::platform = Scout::PlatformType::Windows;
+#elif defined(__linux__)
+	Scout::PlatformType Scout::platform = Scout::PlatformType::Linux;
+#elif defined(__APPLE__)
+	Scout::PlatformType Scout::platform = Scout::PlatformType::MacOS;
 #else
-	#error Only Windows is supported.
+	Scout::PlatformType Scout::platform = Scout::PlatformType::Unknown;
 #endif
 
 Scout::RendererType Scout::renderer = Scout::RendererType::OpenGL33;
