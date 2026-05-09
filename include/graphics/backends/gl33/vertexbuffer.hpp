@@ -13,6 +13,7 @@ namespace Scout::Renderer {
 		private:
 		std::vector<float> vertices;
 		unsigned int VBO;
+		bool destroyed = false;
 
 		public:
 		/**
@@ -39,6 +40,8 @@ namespace Scout::Renderer {
 		 * This actually returns the amount of vertices in the internal `std::vector`. But unless they get modified outside of the object's knowledge, they are both the same.
 		*/
 		unsigned int getAmount() const;
+
+		void destroy();
 
 	};
 

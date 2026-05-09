@@ -56,9 +56,14 @@ Scout::Renderer::Shader::Shader(std::string_view vertexShaderSrc, std::string_vi
 
 
 Scout::Renderer::Shader::~Shader() {
+	destroy();
+}
 
+
+void Scout::Renderer::Shader::destroy() {
+	if (destroyed) return;
+	destroyed = true;
 	glDeleteProgram(shader);
-
 }
 
 

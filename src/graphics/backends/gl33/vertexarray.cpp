@@ -29,6 +29,13 @@ void Scout::Renderer::VertexArray::init() {
 
 
 Scout::Renderer::VertexArray::~VertexArray() {
+	destroy();
+}
+
+
+void Scout::Renderer::VertexArray::destroy() {
+	if (destroyed) return;
+	destroyed = true;
 	glDeleteVertexArrays(1, &VAO);
 }
 

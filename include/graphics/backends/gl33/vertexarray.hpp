@@ -22,6 +22,7 @@ namespace Scout::Renderer {
 		unsigned int VAO;
 
 		std::vector<VertexAttribute*>& attribs;
+		bool destroyed = false;
 
 		public:
 		/**
@@ -48,6 +49,8 @@ namespace Scout::Renderer {
 		const VertexBuffer* getVertexBuffer() const;
 		const ElementBuffer* getElementBuffer() const;
 		const std::vector<VertexAttribute*>& getVertexAttribs() const;
+
+		void destroy();
 
 	};
 

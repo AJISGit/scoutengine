@@ -134,6 +134,13 @@ int main() {
 
 	}
 
+
+	texture.destroy();
+	vertexArray.destroy();
+	vertexBuffer.destroy();
+	elementBuffer.destroy();
+
+
 	window.close();
 	
 	glfwTerminate();

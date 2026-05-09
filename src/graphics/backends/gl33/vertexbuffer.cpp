@@ -19,9 +19,14 @@ void Scout::Renderer::VertexBuffer::init() {
 
 
 Scout::Renderer::VertexBuffer::~VertexBuffer() {
-	
-	glDeleteBuffers(1, &VBO);
+	destroy();
+}
 
+
+void Scout::Renderer::VertexBuffer::destroy() {
+	if (destroyed) return;
+	destroyed = true;
+	glDeleteBuffers(1, &VBO);
 }
 
 

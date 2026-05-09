@@ -107,6 +107,13 @@ Scout::Texture::Texture(unsigned char* data, unsigned int width, unsigned int he
 
 
 Scout::Texture::~Texture() {
+	destroy();
+}
+
+
+void Scout::Texture::destroy() {
+	if (destroyed) return;
+	destroyed = true;
 	glDeleteTextures(1, &id);
 }
 

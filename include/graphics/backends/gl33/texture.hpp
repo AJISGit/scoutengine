@@ -24,6 +24,7 @@ namespace Scout {
 		TextureMagFilter magFilter;
 
 		TextureFormat format;
+		bool destroyed = false;
 	
 		public:
 
@@ -43,6 +44,8 @@ namespace Scout {
 		TextureMagFilter getMagFilter();
 
 		TextureFormat getFormat();
+
+		void destroy();
 
 
 	};

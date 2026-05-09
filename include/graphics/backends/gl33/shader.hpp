@@ -20,6 +20,7 @@ namespace Scout::Renderer {
 		unsigned int vertexShader;
 		unsigned int fragmentShader;
 		unsigned int shader;
+		bool destroyed = false;
 
 		public:
 		/**
@@ -53,6 +54,8 @@ namespace Scout::Renderer {
 		void setUniform(std::string_view name, const glm::vec4& value);
 
 		void setUniform(std::string_view name, const glm::mat4& value);
+
+		void destroy();
 		
 
 	};

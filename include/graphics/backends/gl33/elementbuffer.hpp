@@ -19,6 +19,8 @@ namespace Scout::Renderer {
 		std::vector<unsigned int> indices;
 		unsigned int EBO;
 
+		bool destroyed = false;
+
 		public:
 		/**
 		 * @param indices The indices to be stored in the buffer.
@@ -44,6 +46,8 @@ namespace Scout::Renderer {
 		 * This actually returns the amount of indices in the internal `std::vector`. But unless they get modified outside of the object's knowledge, they are both the same.
 		*/
 		unsigned int getAmount() const;
+
+		void destroy();
 
 	};
 

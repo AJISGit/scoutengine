@@ -21,9 +21,14 @@ void Scout::Renderer::ElementBuffer::init() {
 
 
 Scout::Renderer::ElementBuffer::~ElementBuffer() {
-	
-	glDeleteBuffers(1, &EBO);
+	destroy();
+}
 
+
+void Scout::Renderer::ElementBuffer::destroy() {
+	if (destroyed) return;
+	destroyed = true;
+	glDeleteBuffers(1, &EBO);
 }
 
 
