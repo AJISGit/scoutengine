@@ -139,6 +139,7 @@ int main() {
 	vertexArray.destroy();
 	vertexBuffer.destroy();
 	elementBuffer.destroy();
+	shader.destroy();
 
 
 	window.close();
