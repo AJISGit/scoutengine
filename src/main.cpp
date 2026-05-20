@@ -4,6 +4,9 @@
 #include <scout.hpp>
 #include <window.hpp>
 #include <draw.hpp>
+
+#include <instanceptr.hpp>
+
 #include <texture.hpp>
 #include <stb_image.h>
 #include <iostream>
@@ -91,6 +94,12 @@ int main() {
 
 	float deltaTime = 0.0f;
 	float lastFrame = 0.0f;
+
+
+	Scout::InstancePtr<Scout::Instance> instptr = Scout::newInstance<Scout::Instance>();
+	std::cout << instptr->getName() << '\n';
+	instptr.destroy();
+
 
 	while (window.isOpen()) {
 

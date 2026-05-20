@@ -21,6 +21,7 @@ namespace Scout {
 		std::string name = "Instance";
 
 		bool drawable = false;
+		bool destroyable = true;
 
 		public:
 
@@ -69,6 +70,7 @@ namespace Scout {
 		 * @return If this `Instance` is drawable.
 		*/
 		bool isDrawable();
+		bool isDestroyable();
 
 
 	};

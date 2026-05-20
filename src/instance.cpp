@@ -77,3 +77,8 @@ bool Scout::Instance::isDrawable() {
 	return drawable;
 }
 
+
+bool Scout::Instance::isDestroyable() {
+	return destroyable;
+}
+

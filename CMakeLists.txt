@@ -35,6 +35,7 @@ add_library(
 	include/shader.hpp
 	include/draw.hpp
 	include/instance.hpp
+	include/instanceptr.hpp
 
 	src/glad.c
 
