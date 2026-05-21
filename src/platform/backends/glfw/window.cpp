@@ -128,6 +128,44 @@ bool Scout::Window::isKeyDown(Scout::Input::Key key) {
 	
 	switch (key) {
 
+		case Scout::Input::Key::Apostrophe:
+			return glfwGetKey(window, GLFW_KEY_APOSTROPHE) == GLFW_PRESS;
+		case Scout::Input::Key::Comma:
+			return glfwGetKey(window, GLFW_KEY_COMMA) == GLFW_PRESS;
+		case Scout::Input::Key::Minus:
+			return glfwGetKey(window, GLFW_KEY_MINUS) == GLFW_PRESS;
+		case Scout::Input::Key::Period:
+			return glfwGetKey(window, GLFW_KEY_PERIOD) == GLFW_PRESS;
+		case Scout::Input::Key::Slash:
+			return glfwGetKey(window, GLFW_KEY_SLASH) == GLFW_PRESS;
+		case Scout::Input::Key::Semicolon:
+			return glfwGetKey(window, GLFW_KEY_SEMICOLON) == GLFW_PRESS;
+		case Scout::Input::Key::Equal:
+			return glfwGetKey(window, GLFW_KEY_EQUAL) == GLFW_PRESS;
+
+
+		case Scout::Input::Key::Zero:
+			return glfwGetKey(window, GLFW_KEY_0) == GLFW_PRESS;
+		case Scout::Input::Key::One:
+			return glfwGetKey(window, GLFW_KEY_1) == GLFW_PRESS;
+		case Scout::Input::Key::Two:
+			return glfwGetKey(window, GLFW_KEY_2) == GLFW_PRESS;
+		case Scout::Input::Key::Three:
+			return glfwGetKey(window, GLFW_KEY_3) == GLFW_PRESS;
+		case Scout::Input::Key::Four:
+			return glfwGetKey(window, GLFW_KEY_4) == GLFW_PRESS;
+		case Scout::Input::Key::Five:
+			return glfwGetKey(window, GLFW_KEY_5) == GLFW_PRESS;
+		case Scout::Input::Key::Six:
+			return glfwGetKey(window, GLFW_KEY_6) == GLFW_PRESS;
+		case Scout::Input::Key::Seven:
+			return glfwGetKey(window, GLFW_KEY_7) == GLFW_PRESS;
+		case Scout::Input::Key::Eight:
+			return glfwGetKey(window, GLFW_KEY_8) == GLFW_PRESS;
+		case Scout::Input::Key::Nine:
+			return glfwGetKey(window, GLFW_KEY_9) == GLFW_PRESS;
+
+
 		case Scout::Input::Key::A:
 			return glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS;
 		case Scout::Input::Key::B:
