@@ -97,7 +97,13 @@ int main() {
 
 
 	Scout::InstancePtr<Scout::Instance> instptr = Scout::newInstance<Scout::Instance>();
+	Scout::InstancePtr<Scout::Instance> childptr1 = Scout::newInstance<Scout::Instance>();
+	childptr1->setName("ChildInst");
+	instptr->addChild(childptr1);
+
+
 	std::cout << instptr->getName() << '\n';
+	std::cout << instptr->getChild("ChildInst")->getName() << '\n';
 	instptr.destroy();
 
 

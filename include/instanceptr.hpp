@@ -16,7 +16,7 @@ namespace Scout {
 
 		void destroy();
 
-		T* operator->();
+		T* operator->() const;
 
 	};
 
@@ -42,7 +42,7 @@ void Scout::InstancePtr<T>::destroy() {
 
 
 template <typename T>
-T* Scout::InstancePtr<T>::operator->() {
+T* Scout::InstancePtr<T>::operator->() const {
 	return ptr;
 }
 

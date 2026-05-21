@@ -1,4 +1,5 @@
 #include <instance.hpp>
+#include <instanceptr.hpp>
 
 
 Scout::Instance::Instance() {
@@ -10,31 +11,31 @@ Scout::Instance::~Instance() {
 
 	for (auto& pair : children) {
 		if (pair.second == nullptr) continue;
-		delete pair.second;
+		Scout::InstancePtr<Instance>(pair.second).destroy();
 	}
 
 }
 
 
-Scout::Instance* Scout::Instance::getChild(std::string_view name) {
-	return children[name.data()];
+Scout::InstancePtr<Scout::Instance> Scout::Instance::getChild(std::string_view name) {
+	return Scout::InstancePtr<Scout::Instance>(children.at(name.data()));
 }
 
 
-void Scout::Instance::addChild(Scout::Instance* child) {
+void Scout::Instance::addChild(const Scout::InstancePtr<Scout::Instance>& child) {
 	child->setParent(this);
 }
 
 
-Scout::Instance* Scout::Instance::removeChild(std::string_view name) {
+Scout::InstancePtr<Scout::Instance> Scout::Instance::removeChild(std::string_view name) {
 	Scout::Instance* child = children[name.data()];
 	children.erase(name.data());
-	return child;
+	return Scout::InstancePtr<Instance>(child);
 }
 
 
 void Scout::Instance::deleteChild(std::string_view name) {
-	delete removeChild(name);
+	removeChild(name).destroy();
 }
 
 
