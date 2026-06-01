@@ -76,3 +76,18 @@ target_include_directories(scoutengine PUBLIC include)
 target_link_libraries(scoutengine scout)
 target_link_libraries(scoutengine glfw)
 target_link_libraries(scoutengine glm)
+
+add_executable(
+
+	testproject
+
+	testProject/main.cpp
+
+)
+
+
+target_include_directories(testproject PUBLIC include)
+
+target_link_libraries(testproject scout)
+target_link_libraries(testproject glfw)
+target_link_libraries(testproject glm)
