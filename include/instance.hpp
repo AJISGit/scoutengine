@@ -51,7 +51,7 @@ namespace Scout {
 		*/
 		Instance* getParent();
 		/// Sets the parent of this `Instance`.
-		void setParent(Instance* parent);
+		void setParent(const InstancePtr<Instance>& parent);
 
 		/**
 		 * @brief Gets the name of this `Instance`.

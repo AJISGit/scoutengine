@@ -44,11 +44,11 @@ Scout::Instance* Scout::Instance::getParent() {
 }
 
 
-void Scout::Instance::setParent(Scout::Instance* parent) {
+void Scout::Instance::setParent(const Scout::InstancePtr<Instance>& parent) {
 
 	Scout::Instance* oldParent = this->parent;
 
-	this->parent = parent;
+	this->parent = parent.ptr;
 	parent->children[name] = this;
 
 	if (oldParent == nullptr) return;

@@ -18,6 +18,8 @@ namespace Scout {
 
 		T* operator->() const;
 
+		friend class Instance;
+
 	};
 
 	template <typename T, typename... Args>
