@@ -3,6 +3,8 @@
 #include <unordered_map>
 #include <string>
 #include <string_view>
+#include <utility>
+#include <vector>
 
 
 namespace Scout {
@@ -34,7 +36,8 @@ namespace Scout {
 		 * @brief Returns the child `name`
 		 * @return The child with the name `name`. Or `nullptr` if it doesn't exist.
 		*/
-		InstancePtr<Instance> getChild(std::string_view name);
+		InstancePtr<Instance> getChild(std::string_view name) const;
+		std::vector<InstancePtr<Instance>> getChildren() const;
 		/// Adds an `Instance` to this `Instance`'s children.
 		void addChild(const InstancePtr<Instance>& child);
 		/**
@@ -49,7 +52,7 @@ namespace Scout {
 		 * @brief Returns the parent of this `Instance`.
 		 * @return This `Instance`'s parent.
 		*/
-		Instance* getParent();
+		Instance* getParent() const;
 		/// Sets the parent of this `Instance`.
 		void setParent(const InstancePtr<Instance>& parent);
 
@@ -57,7 +60,7 @@ namespace Scout {
 		 * @brief Gets the name of this `Instance`.
 		 * @return This `Instance`'s name.
 		*/
-		std::string getName();
+		std::string getName() const;
 		/// Sets the name of this `Instance`.
 		void setName(std::string_view name);
 
@@ -71,9 +74,8 @@ namespace Scout {
 		 * @brief Checks if the instance is drawable.
 		 * @return If this `Instance` is drawable.
 		*/
-		bool isDrawable();
-		bool isDestroyable();
-
+		bool isDrawable() const;
+		bool isDestroyable() const;
 
 	};
 

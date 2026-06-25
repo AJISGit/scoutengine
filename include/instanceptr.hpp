@@ -5,6 +5,9 @@
 
 
 namespace Scout {
+
+	template <typename T>
+	class InstancePtr;
 	
 	template <typename T>
 	class InstancePtr {
@@ -13,10 +16,21 @@ namespace Scout {
 	
 		public:
 		InstancePtr(T* instance);
+		InstancePtr(const InstancePtr<T>&) = default;
 
 		void destroy();
 
 		T* operator->() const;
+		T& operator*();
+		const T& operator*() const;
+
+		InstancePtr<T>& operator++();	
+		InstancePtr<T> operator++(int);
+		InstancePtr<T>& operator--();	
+		InstancePtr<T> operator--(int);
+
+		bool operator==(const InstancePtr<Instance>& rhs) const;
+		bool operator!=(const InstancePtr<Instance>& rhs) const;
 
 		friend class Instance;
 
@@ -46,6 +60,62 @@ void Scout::InstancePtr<T>::destroy() {
 template <typename T>
 T* Scout::InstancePtr<T>::operator->() const {
 	return ptr;
+}
+
+
+template <typename T>
+T& Scout::InstancePtr<T>::operator*() {
+	return *ptr;
+}
+
+
+template <typename T>
+const T& Scout::InstancePtr<T>::operator*() const {
+	return *ptr;
+}
+
+
+template <typename T>
+Scout::InstancePtr<T>& Scout::InstancePtr<T>::operator++() {
+	++ptr;
+	return *this;
+}
+
+
+
+template <typename T>
+Scout::InstancePtr<T> Scout::InstancePtr<T>::operator++(int) {
+	Scout::InstancePtr<T> temp = *this;
+	++ptr;
+	return temp;
+}
+
+
+template <typename T>
+Scout::InstancePtr<T>& Scout::InstancePtr<T>::operator--() {
+	--ptr;
+	return *this;
+}
+
+
+
+template <typename T>
+Scout::InstancePtr<T> Scout::InstancePtr<T>::operator--(int) {
+	Scout::InstancePtr<T> temp = *this;
+	--ptr;
+	return temp;
+}
+
+
+template <typename T>
+bool Scout::InstancePtr<T>::operator==(const Scout::InstancePtr<Scout::Instance>& rhs) const {	
+	return rhs.ptr == ptr;
+}
+
+
+template <typename T>
+bool Scout::InstancePtr<T>::operator!=(const Scout::InstancePtr<Scout::Instance>& rhs) const {	
+	return rhs.ptr != ptr;
 }
 
 
