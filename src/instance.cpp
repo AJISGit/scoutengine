@@ -17,16 +17,16 @@ Scout::Instance::~Instance() {
 }
 
 
-Scout::InstancePtr<Scout::Instance> Scout::Instance::getChild(std::string_view name) const {
-	return Scout::InstancePtr<Scout::Instance>(children.at(name.data()));
+Scout::BasicInstPtr Scout::Instance::getChild(std::string_view name) const {
+	return Scout::BasicInstPtr(children.at(name.data()));
 }
 
 
-std::vector<Scout::InstancePtr<Scout::Instance>> Scout::Instance::getChildren() const {
+std::vector<Scout::BasicInstPtr> Scout::Instance::getChildren() const {
 	
-	std::vector<Scout::InstancePtr<Scout::Instance>> childrenVector;
+	std::vector<Scout::BasicInstPtr> childrenVector;
 	for (auto& k : children) {
-		Scout::InstancePtr<Scout::Instance> ptr(k.second);
+		Scout::BasicInstPtr ptr(k.second);
 		childrenVector.push_back(ptr);
 	}
 
@@ -35,15 +35,15 @@ std::vector<Scout::InstancePtr<Scout::Instance>> Scout::Instance::getChildren() 
 }
 
 
-void Scout::Instance::addChild(const Scout::InstancePtr<Scout::Instance>& child) {
+void Scout::Instance::addChild(const Scout::BasicInstPtr& child) {
 	child->setParent(this);
 }
 
 
-Scout::InstancePtr<Scout::Instance> Scout::Instance::removeChild(std::string_view name) {
+Scout::BasicInstPtr Scout::Instance::removeChild(std::string_view name) {
 	Scout::Instance* child = children[name.data()];
 	children.erase(name.data());
-	return Scout::InstancePtr<Instance>(child);
+	return Scout::BasicInstPtr(child);
 }
 
 
@@ -57,7 +57,7 @@ Scout::Instance* Scout::Instance::getParent() const {
 }
 
 
-void Scout::Instance::setParent(const Scout::InstancePtr<Instance>& parent) {
+void Scout::Instance::setParent(const Scout::BasicInstPtr& parent) {
 
 	Scout::Instance* oldParent = this->parent;
 

@@ -96,12 +96,12 @@ int main() {
 	float lastFrame = 0.0f;
 
 
-	Scout::InstancePtr<Scout::Instance> instptr = Scout::newInstance<Scout::Instance>();
-	Scout::InstancePtr<Scout::Instance> childptr1 = Scout::newInstance<Scout::Instance>();
+	Scout::BasicInstPtr instptr = Scout::newInstance<Scout::Instance>();
+	Scout::BasicInstPtr childptr1 = Scout::newInstance<Scout::Instance>();
 	childptr1->setName("ChildInst");
 	instptr->addChild(childptr1);
 
-	Scout::InstancePtr<Scout::Instance> childptr2 = Scout::newInstance<Scout::Instance>();
+	Scout::BasicInstPtr childptr2 = Scout::newInstance<Scout::Instance>();
 	childptr2->setName("ChildInst2");
 	instptr->addChild(childptr2);
 
@@ -110,7 +110,7 @@ int main() {
 	std::cout << instptr->getChild("ChildInst")->getName() << '\n';
 
 	std::cout << "---------------\n";
-	for (Scout::InstancePtr<Scout::Instance> child : instptr->getChildren()) {
+	for (Scout::BasicInstPtr child : instptr->getChildren()) {
 		std::cout << child->getName() << '\n';
 	}
 

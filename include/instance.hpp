@@ -13,6 +13,8 @@ namespace Scout {
 	template <typename T>
 	class InstancePtr;
 
+	using BasicInstPtr = InstancePtr<Instance>;
+
 	/**
 	 * @brief The base class for all objects in a game.
 	*/
@@ -36,15 +38,15 @@ namespace Scout {
 		 * @brief Returns the child `name`
 		 * @return The child with the name `name`. Or `nullptr` if it doesn't exist.
 		*/
-		InstancePtr<Instance> getChild(std::string_view name) const;
-		std::vector<InstancePtr<Instance>> getChildren() const;
+		BasicInstPtr getChild(std::string_view name) const;
+		std::vector<BasicInstPtr> getChildren() const;
 		/// Adds an `Instance` to this `Instance`'s children.
-		void addChild(const InstancePtr<Instance>& child);
+		void addChild(const BasicInstPtr& child);
 		/**
 		 * @brief Removes but does not deallocate a child from the `Instance`'s children.
 		 * @return A pointer to the removed `Instance`. 
 		*/
-		InstancePtr<Instance> removeChild(std::string_view name);
+		BasicInstPtr removeChild(std::string_view name);
 		/// Removes and deallocates a child.
 		void deleteChild(std::string_view name);
 
@@ -54,7 +56,7 @@ namespace Scout {
 		*/
 		Instance* getParent() const;
 		/// Sets the parent of this `Instance`.
-		void setParent(const InstancePtr<Instance>& parent);
+		void setParent(const BasicInstPtr& parent);
 
 		/**
 		 * @brief Gets the name of this `Instance`.

@@ -19,6 +19,7 @@ namespace Scout {
 		InstancePtr(const InstancePtr<T>&) = default;
 
 		void destroy();
+		bool isNull() const;
 
 		T* operator->() const;
 		T& operator*();
@@ -54,6 +55,12 @@ void Scout::InstancePtr<T>::destroy() {
 		throw std::runtime_error(ptr->getName() + " is not destroyable.");
 	}
 	delete ptr;
+}
+
+
+template <typename T>
+bool Scout::InstancePtr<T>::isNull() const {
+	return ptr == nullptr;
 }
 
 
