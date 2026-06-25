@@ -54,7 +54,7 @@ namespace Scout {
 		 * @brief Returns the parent of this `Instance`.
 		 * @return This `Instance`'s parent.
 		*/
-		Instance* getParent() const;
+		BasicInstPtr getParent() const;
 		/// Sets the parent of this `Instance`.
 		void setParent(const BasicInstPtr& parent);
 

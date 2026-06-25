@@ -52,8 +52,8 @@ void Scout::Instance::deleteChild(std::string_view name) {
 }
 
 
-Scout::Instance* Scout::Instance::getParent() const {
-	return parent;
+Scout::BasicInstPtr Scout::Instance::getParent() const {
+	return Scout::BasicInstPtr(parent);
 }
 
 
