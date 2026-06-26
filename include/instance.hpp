@@ -24,14 +24,19 @@ namespace Scout {
 
 		Instance* parent = nullptr;
 		std::unordered_map<std::string, Instance*> children;
-		std::string name = "Instance";
 
+		protected:
+
+		std::string name = "Instance";
 		bool drawable = false;
 		bool destroyable = true;
 
+		
+		void _setParent(const BasicInstPtr& parent);
+
 		public:
 
-		Instance();
+		Instance(std::string_view name, BasicInstPtr parent);
 		virtual ~Instance();
 
 		/**
@@ -54,9 +59,9 @@ namespace Scout {
 		 * @brief Returns the parent of this `Instance`.
 		 * @return This `Instance`'s parent.
 		*/
-		BasicInstPtr getParent() const;
+		virtual BasicInstPtr getParent() const;
 		/// Sets the parent of this `Instance`.
-		void setParent(const BasicInstPtr& parent);
+		virtual void setParent(const BasicInstPtr& parent);
 
 		/**
 		 * @brief Gets the name of this `Instance`.
@@ -64,7 +69,7 @@ namespace Scout {
 		*/
 		std::string getName() const;
 		/// Sets the name of this `Instance`.
-		void setName(std::string_view name);
+		virtual void setName(std::string_view name);
 
 		
 		/// Per `Instance` behavior each frame.

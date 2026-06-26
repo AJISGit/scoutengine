@@ -2,8 +2,9 @@
 #include <instanceptr.hpp>
 
 
-Scout::Instance::Instance() {
-
+Scout::Instance::Instance(std::string_view name, Scout::BasicInstPtr parent) {
+	this->name = name;
+	_setParent(parent);
 }
 
 
@@ -11,7 +12,7 @@ Scout::Instance::~Instance() {
 
 	for (auto& pair : children) {
 		if (pair.second == nullptr) continue;
-		Scout::InstancePtr<Instance>(pair.second).destroy();
+		Scout::BasicInstPtr(pair.second).destroy();
 	}
 
 }
@@ -57,15 +58,25 @@ Scout::BasicInstPtr Scout::Instance::getParent() const {
 }
 
 
-void Scout::Instance::setParent(const Scout::BasicInstPtr& parent) {
+void Scout::Instance::_setParent(const Scout::BasicInstPtr& parent) {
 
 	Scout::Instance* oldParent = this->parent;
 
 	this->parent = parent.ptr;
-	parent->children[name] = this;
+
+	if (!parent.isNull()) {
+		parent->children[name] = this;
+	}
 
 	if (oldParent == nullptr) return;
 	oldParent->children.erase(name);
+
+}
+
+
+void Scout::Instance::setParent(const Scout::BasicInstPtr& parent) {
+
+	_setParent(parent);
 
 }
 

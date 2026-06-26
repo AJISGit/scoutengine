@@ -36,6 +36,7 @@ add_library(
 	include/draw.hpp
 	include/instance.hpp
 	include/instanceptr.hpp
+	include/lockedinstance.hpp
 
 	src/glad.c
 
@@ -54,6 +55,7 @@ add_library(
 	src/shader.cpp
 	src/draw.cpp
 	src/instance.cpp
+	src/lockedinstance.cpp
 
 )
 

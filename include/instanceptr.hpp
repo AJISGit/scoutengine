@@ -1,5 +1,7 @@
 #pragma once
 #include <instance.hpp>
+#include <lockedinstance.hpp>
+
 #include <type_traits>
 #include <stdexcept>
 
@@ -8,7 +10,7 @@ namespace Scout {
 
 	template <typename T>
 	class InstancePtr;
-	
+
 	template <typename T>
 	class InstancePtr {
 		private:
@@ -33,7 +35,12 @@ namespace Scout {
 		bool operator==(const InstancePtr<Instance>& rhs) const;
 		bool operator!=(const InstancePtr<Instance>& rhs) const;
 
+		operator InstancePtr<Instance>();
+
 		friend class Instance;
+
+		template <typename from, typename to>
+		friend InstancePtr<to> convertInstPtr(const InstancePtr<from>& ptr);
 
 	};
 
@@ -126,6 +133,12 @@ bool Scout::InstancePtr<T>::operator!=(const Scout::InstancePtr<Scout::Instance>
 }
 
 
+template <typename T>
+Scout::InstancePtr<T>::operator Scout::InstancePtr<Scout::Instance>() {
+	return Scout::InstancePtr<Instance>(ptr);
+}
+
+
 template <typename T, typename... Args>
 Scout::InstancePtr<T> Scout::newInstance(Args... args) {
 
@@ -134,3 +147,15 @@ Scout::InstancePtr<T> Scout::newInstance(Args... args) {
 	return Scout::InstancePtr<T>(new T(args...));
 
 }
+
+
+template <typename from, typename to>
+Scout::InstancePtr<to> Scout::convertInstPtr(const Scout::InstancePtr<from>& ptr) {
+
+	static_assert(std::is_base_of<Scout::Instance, from>::value, "from has to be derived from an Instance.");
+	static_assert(std::is_base_of<Scout::Instance, to>::value, "to has to be derived from an Instance.");
+
+	return Scout::InstancePtr<to>(ptr.ptr);
+
+}
+
